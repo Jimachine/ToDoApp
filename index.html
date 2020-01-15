@@ -7,9 +7,18 @@
     </head>
 
     <body>
-        <form>
-            <input type="text" placeholder="Enter a new task">
+        <h1>
+            To-Do List
+        </h1>
+
+        <form id="user-input">
+            <input id="task" type="text" placeholder="Enter a new task">
+            <button type="button" onclick="addTask()">OK</button>
         </form>
+        
+        <ul id="task-list">
+
+        </ul>
 
         <script src="script.js"></script>
     </body>
