@@ -4,10 +4,10 @@ function addTask(e)
 
         {
             e.preventDefault();
+            var input = document.querySelector("#task");
 
             if (input.value !== ""){
-                
-                input = document.querySelector("#task");
+
                 var node = document.createElement("LI");
                 var textnode = document.createTextNode(input.value);
                 node.appendChild(textnode);

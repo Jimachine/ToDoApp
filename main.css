@@ -15,10 +15,14 @@ button {
     display: inline;
 }
 
-ul {
-    color: darkblue;
+#listContainer {
+    margin: 0 auto;
+    width: 300px;
 }
 
-#task-list {
-    display: list-item;
+ul {
+    color: darkblue;
+    list-style-position: inside;
+    text-align: left;
+    padding: 0;
 }
