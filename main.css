@@ -18,3 +18,7 @@ button {
 ul {
     color: darkblue;
 }
+
+#task-list {
+    display: list-item;
+}
