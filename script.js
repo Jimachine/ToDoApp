@@ -1,5 +1,5 @@
 document.querySelector("#user-input").addEventListener("submit", addTask);
-document.querySelector("#task-list").addEventListener("click", removeTask);
+document.querySelector("#task-list").addEventListener("click", clicked);
 
 function addTask(e)
 
@@ -31,10 +31,9 @@ function addTask(e)
             }
         }
 
-function removeTask(e)
+function clicked(e)
 
-        {
-                //e.preventDefault();    
+        {  
 
                 if (e.target.tagName == "BUTTON")
                 {
@@ -46,6 +45,12 @@ function removeTask(e)
 
                 else if (e.target.tagName == "INPUT")
                 {
-                    console.log(e.target.nodeName);
+                    if (e.target.checked == true) {
+                        e.target.parentNode.style.textDecoration = "line-through";
+                    }
+
+                    else {
+                        e.target.parentNode.style.textDecoration = "none";
+                    }
                 }
         }
