@@ -20,6 +20,10 @@ button {
     width: 300px;
 }
 
+p {
+    display: inline;
+}
+
 ul {
     color: darkblue;
     list-style-position: inside;
