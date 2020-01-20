@@ -30,3 +30,11 @@ ul {
     text-align: left;
     padding: 0;
 }
+
+.checked {
+    text-decoration: line-through;
+}
+
+.unchecked {
+    text-decoration: none;
+}

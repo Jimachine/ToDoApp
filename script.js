@@ -24,7 +24,7 @@ function addTask(e)
                 
                 let ul = document.querySelector('ul');
                 let li = document.createElement('li');
-                li.innerHTML = '<p class="para">' + input.value + '</p>' + '&nbsp' + '<input type="checkbox">' + '<button>Delete</button>';
+                li.innerHTML = '<p class="unchecked">' + input.value + '</p>' + '&nbsp' + '<input type="checkbox">' + '<button>Delete</button>';
                 ul.appendChild(li);
                 document.getElementById("task").value = "";
 
@@ -46,11 +46,11 @@ function clicked(e)
                 else if (e.target.tagName == "INPUT")
                 {
                     if (e.target.checked == true) {
-                        e.target.parentNode.querySelector(".para").style.textDecoration = "line-through";
+                        e.target.parentNode.querySelector(".unchecked").className = "checked";
                     }
 
                     else {
-                        e.target.parentNode.querySelector(".para").style.textDecoration = "none";
+                        e.target.parentNode.querySelector(".checked").className = "unchecked";
                     }
                 }
         }
