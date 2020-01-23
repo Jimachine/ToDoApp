@@ -1,14 +1,19 @@
 h1 {
     text-align: center;
-    color: darkblue;
 }
 
 body {
-    background: pink;
+    background: rgb(252, 159, 98);
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 form {
     text-align: center;
+}
+
+li, input {
+    border-radius: 25px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 button {
@@ -18,6 +23,8 @@ button {
 #listContainer {
     margin: 0 auto;
     width: 300px;
+    background-color: white;
+    border-radius: 25px;
 }
 
 p {
@@ -25,7 +32,6 @@ p {
 }
 
 ul {
-    color: darkblue;
     list-style-position: inside;
     text-align: left;
     padding: 0;
