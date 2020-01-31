@@ -9,22 +9,9 @@ function addTask(e)
 
             if (input.value !== "")
             {
-
-                /* var newListItem = document.createElement("LI");
-                var newButton = document.createElement("BUTTON");
-                var buttonText = document.createTextNode("Delete");
-                var textnode = document.createTextNode(input.value);
-
-                newListItem.appendChild(textnode);
-                newButton.appendChild(buttonText);
-
-                document.getElementById("task-list").appendChild(newListItem);
-                newListItem.appendChild(newButton);
-                document.getElementById("task").value = ""; */
-                
                 let ul = document.querySelector('ul');
                 let li = document.createElement('li');
-                li.innerHTML = '<p class="unchecked">' + input.value + '</p>' + '&nbsp' + '<input type="checkbox">' + '<button>Delete</button>';
+                li.innerHTML = '<input type="checkbox" class="checkbox">' + '<p class="unchecked">' + input.value + '</p>' + '<i class="fas fa-trash"></i>';
                 ul.appendChild(li);
                 document.getElementById("task").value = "";
 
@@ -34,8 +21,7 @@ function addTask(e)
 function clicked(e)
 
         {  
-
-                if (e.target.tagName == "BUTTON")
+                if (e.target.tagName == "I")
                 {
                     var target = e.target;
                     var toDelete = target.parentNode;
