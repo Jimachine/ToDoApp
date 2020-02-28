@@ -51,8 +51,8 @@ i {
     width: 37px;
     font-size: 16px;
     position: absolute;
-    top: 50%;
-    right: 50%;
+    top: 0px;
+    right: 0px;
 }
 
 #listContainer {
