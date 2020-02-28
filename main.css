@@ -1,5 +1,10 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+
 * {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 h1 {
@@ -30,25 +35,30 @@ li, input {
 }
 
 li {
-    overflow: auto;
-    border-style: solid;
+    margin: 5px;
+    background-color: darkorange;
+    position: relative;
+    padding-left: 50px;
+    padding-right: 50px;
+    /* padding-bottom: 50px; */
 }
 
 i {
     background-color: Dodgerblue;
     color: white;
-    padding: 12px 16px;
-    border: none;
+    padding: 12px 12px;
+    height: 37px;
+    width: 37px;
     font-size: 16px;
-    float: right;
+    position: absolute;
+    top: 50%;
+    right: 50%;
 }
 
 #listContainer {
     margin: 0 auto;
-    width: 60%;
-    background-color: darkorange;
     font-size: 16px;
-    overflow-y: auto;
+    width: 75%;
 }
 
 p {
@@ -56,14 +66,13 @@ p {
 }
 
 ul {
-    list-style-position: inside;
     text-align: left;
     margin: auto;
-    padding: 0;
 }
 
 .checked {
     text-decoration: line-through;
+    color: rgb(226, 44, 44);
 }
 
 .unchecked {
@@ -71,5 +80,8 @@ ul {
 }
 
 .checkbox {
-    margin: 12px;
+    display: inline;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
