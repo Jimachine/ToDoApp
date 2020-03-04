@@ -40,7 +40,8 @@ li {
     position: relative;
     padding-left: 50px;
     padding-right: 50px;
-    /* padding-bottom: 50px; */
+    min-height: 37px;
+    line-height: 37px;
 }
 
 i {
@@ -82,6 +83,21 @@ ul {
 .checkbox {
     display: inline;
     position: absolute;
+    top: 17px;
+    left: 10px;
+    transform: translatey(-50%);
+}
+
+#resetBtn {
+    font-size: 16px;
+}
+
+.fa-arrow-down {
     top: 0px;
-    left: 0px;
+    right: 37px;
+}
+
+.fa-arrow-up {
+    top: 0px;
+    right: 74px;
 }
