@@ -2,6 +2,8 @@ document.querySelector("#user-input").addEventListener("submit", addTask);
 document.querySelector("#user-input").addEventListener("reset", clearAll);
 document.querySelector("#task-list").addEventListener("click", clicked);
 
+let tasksArray = [];
+
 function addTask(e)
 
         {
@@ -18,6 +20,9 @@ function addTask(e)
                                 + '<i class="fas fa-arrow-down"></i>'
                                 + '<i class="fas fa-trash"></i>'
                 ul.appendChild(li);
+                
+                tasksArray.push(li.outerHTML);
+
                 document.getElementById("task").value = "";
 
             }
@@ -59,6 +64,18 @@ function clicked(e)
 
                 else if (e.target.className == "fas fa-arrow-down")
                 {
+                    let ul = document.querySelector('ul');
+                    let i;
+                    
+                    console.log(tasksArray[0]);
+                    console.log(e.target.parentNode);
+
+                    for(i = 0; i < tasksArray.length; i++){
+                        if(tasksArray[i] == e.target.parentNode){
+                            ul.insertBefore(e.target.parentNode, ul.childNodes[tasksArray.length]);
+                        }
+                    }
+
                     
                 }
         }
