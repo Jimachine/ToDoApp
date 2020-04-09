@@ -8,22 +8,28 @@ function addTask(e)
 
         {
             e.preventDefault();
+            // Store text entered into the input field
             let input = document.querySelector("#task");
 
             if (input.value !== "")
             {
                 let ul = document.querySelector('ul');
                 let li = document.createElement('li');
+                let inputField = document.getElementById("task");
+
                 li.innerHTML = '<input type="checkbox" class="checkbox">'
                                 + '<p class="unchecked">' + input.value + '</p>'
                                 + '<i class="fas fa-arrow-up"></i>'
                                 + '<i class="fas fa-arrow-down"></i>'
                                 + '<i class="fas fa-trash"></i>'
-                ul.appendChild(li);
-                
-                tasksArray.push(li.outerHTML);
 
-                document.getElementById("task").value = "";
+                // Add the list item to the list
+                ul.appendChild(li);
+                // Add the list item to an array
+                tasksArray.push(li);
+                
+                // Clear the input field ready for the next task
+                inputField.value = "";
 
             }
         }
@@ -31,26 +37,36 @@ function addTask(e)
 function clearAll()
 
         {
+            //Clear all tasks currently in the list
             let tasks = document.querySelector("#task-list");
 
             while (tasks.hasChildNodes()) {
                 tasks.removeChild(tasks.firstChild);
             }
-
+            // Empty the array
+            tasksArray = [];
         }
 
 function clicked(e)
 
         {  
-
+                // Delete an individual list item when the trash can is clicked
                 if (e.target.className == "fas fa-trash")
                 {
                     var target = e.target;
                     var toDelete = target.parentNode;
                     var parentNode = toDelete.parentNode;
+
+                    // Find the matching list item in the array by looping through each index and then deleting it
+                    for ( i = 0; i < tasksArray.length; i++){
+                        if(tasksArray[i] == toDelete){
+                            delete tasksArray[i];
+                        }
+                    }
                     parentNode.removeChild(toDelete);
                 }
-
+                
+                // Change the class name of the checkbox to indicate whether the text should be scored out or not
                 else if (e.target.className == "checkbox")
                 {
                     if (e.target.checked == true) {
@@ -62,20 +78,9 @@ function clicked(e)
                     }
                 }
 
+                // Move a list item down one space
                 else if (e.target.className == "fas fa-arrow-down")
                 {
-                    let ul = document.querySelector('ul');
-                    let i;
-                    
-                    console.log(tasksArray[0]);
-                    console.log(e.target.parentNode);
-
-                    for(i = 0; i < tasksArray.length; i++){
-                        if(tasksArray[i] == e.target.parentNode){
-                            ul.insertBefore(e.target.parentNode, ul.childNodes[tasksArray.length]);
-                        }
-                    }
-
                     
                 }
         }
