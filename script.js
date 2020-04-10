@@ -65,7 +65,7 @@ function clicked(e)
                     }
                     parentNode.removeChild(toDelete);
                 }
-                
+
                 // Change the class name of the checkbox to indicate whether the text should be scored out or not
                 else if (e.target.className == "checkbox")
                 {
@@ -81,6 +81,32 @@ function clicked(e)
                 // Move a list item down one space
                 else if (e.target.className == "fas fa-arrow-down")
                 {
+                    let ul = document.querySelector('ul');
+                    let li = document.createElement('li');
                     
+                    for (i = 0; i < tasksArray.length; i++){
+                        // Find a match in the array with the list item clicked and make sure it isnt the last index
+                        if(tasksArray[i] == e.target.parentNode && e.target.parentNode != tasksArray[tasksArray.length - 1]){
+                            
+                            // List item below the one which was clicked
+                            let moveUpPage = tasksArray[i + 1];
+
+                            // Clicked list item
+                            let moveDownPage = tasksArray[i];
+
+                            // Re add the items to the array in the corrected positions
+                            tasksArray.splice(i, 1, moveUpPage);
+                            tasksArray.splice(i + 1, 1, moveDownPage);
+                        }
+
+                    }
+                    // Clear the displayed list and repopulate it using the array
+                    ul.innerHTML = '';
+
+                        for (i = 0; i < tasksArray.length; i++){
+                            
+                            li.innerHTML = tasksArray[i].innerHTML;
+                            ul.appendChild(li);
+                    }
                 }
         }
