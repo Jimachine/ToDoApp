@@ -71,14 +71,12 @@ ul {
     margin: auto;
 }
 
-.checked {
+input:checked + p {
     text-decoration: line-through;
     color: rgb(226, 44, 44);
 }
 
-.unchecked {
-    text-decoration: none;
-}
+
 
 .checkbox {
     display: inline;
