@@ -60,14 +60,12 @@ function clicked(e)
 
         {  
                 // Delete an individual list item when the trash can is clicked
-                if (e.target.className == "fas fa-trash")
+                if (e.target.className === "fas fa-trash")
                 {
                     tasksArray.forEach((task, index) => {
-                        let target = e.target.parentNode.getAttribute("data-order");
-                        console.log(index);
-                        console.log(target);
+                        let target = parseInt(e.target.parentNode.getAttribute("data-order"));
 
-                        if(index == target)
+                        if(index === target)
                         {
                             tasksArray.splice(index, 1);
                             renderTasks();
@@ -75,17 +73,15 @@ function clicked(e)
                     })
                 }
 
-                // Move a list item down one space
-                else if (e.target.className == "fas fa-arrow-down")
+                // Move a list item down one place
+                else if (e.target.className === "fas fa-arrow-down")
                 {
-                    let ul = document.querySelector('ul');
-                    let items = document.querySelectorAll('li');
+                    let target = parseInt(e.target.parentNode.getAttribute("data-order"));
+                    let listSize = document.querySelectorAll('li').length;
                     
-                    for (i = 0; i < tasksArray.length; i++){
+                    for (i=0; i < tasksArray.length; i++){
                         // Find a match in the array with the list item clicked and make sure it isnt the last index
-                        console.log(tasksArray[i] == e.target.parentNode);
-                        console.log(e.target.parentNode != tasksArray[tasksArray.length - 1]);
-                        if(tasksArray[i] == e.target.parentNode && e.target.parentNode != tasksArray[tasksArray.length - 1]){
+                        if(i === (target) && listSize - 1 != target){
                             
                             // List item below the one which was clicked
                             let moveUpPage = tasksArray[i + 1];
@@ -102,15 +98,31 @@ function clicked(e)
                         }
 
                     }
-                    // Clear the displayed list and repopulate it using the array
-                    ul.innerHTML = '';
+                    renderTasks();
+                }
 
-                        for (i = 0; i < tasksArray.length; i++){
+                // Move a list item up one place
+                else if (e.target.className === "fas fa-arrow-up")
+                {
+                    let target = parseInt(e.target.parentNode.getAttribute("data-order"));
+                    
+                    for (i = 0; i < tasksArray.length; i++){
+                        // Find a match in the array with the list item clicked and make sure it isnt the first index
+                        if(i === (target) && target != 0){
+                            
+                            // Clicked list item
+                            let moveUpPage = tasksArray[i];
+                            // List item above the one which was clicked
+                            let moveDownPage = tasksArray[i - 1];
 
-                            let li = document.createElement('li');
+                            // Re add the items to the array in the corrected positions
+                            tasksArray.splice(i - 1, 1, moveUpPage);
+                            tasksArray.splice(i, 1, moveDownPage);
 
-                            li.innerHTML = tasksArray[i].innerHTML;
-                            ul.appendChild(li);
+                            break;
+                        }
+
                     }
+                    renderTasks();
                 }
         }
