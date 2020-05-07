@@ -102,8 +102,7 @@ function clicked(e)
                 }
 
                 // Move a list item up one place
-                else if (e.target.className === "fas fa-arrow-up")
-                {
+                else if (e.target.className === "fas fa-arrow-up"){
                     let target = parseInt(e.target.parentNode.getAttribute("data-order"));
                     
                     for (i = 0; i < tasksArray.length; i++){
@@ -118,6 +117,27 @@ function clicked(e)
                             // Re add the items to the array in the corrected positions
                             tasksArray.splice(i - 1, 1, moveUpPage);
                             tasksArray.splice(i, 1, moveDownPage);
+
+                            break;
+                        }
+
+                    }
+                    renderTasks();
+                }
+
+                else if (e.target.className === "checkbox"){
+                    let target = parseInt(e.target.parentNode.getAttribute("data-order"));
+
+                    for (i = 0; i < tasksArray.length; i++){
+                        // Find a match in the array with the list item clicked and make sure it isnt the first index
+                        if(i === (target) && tasksArray[i].complete === false){
+                            tasksArray[i].complete = true;
+
+                            break;
+                        }
+
+                        else if (i === (target) && tasksArray[i].complete === true){
+                            tasksArray[i].complete = false;
 
                             break;
                         }
