@@ -2,25 +2,37 @@ document.querySelector("#user-input").addEventListener("submit", addTask);
 document.querySelector("#user-input").addEventListener("reset", clearAll);
 document.querySelector("#task-list").addEventListener("click", clicked);
 
-let tasksArray = [];
+
+var lsTasks = localStorage.getItem('tasks');
+var tasksArray = [];
+
+if (lsTasks != ""){
+    tasksArray = JSON.parse(lsTasks);
+    renderTasks()
+}
+
+
 
 function addTask(e) {
     e.preventDefault();
     // Store text entered into the input field
     let input = document.querySelector("#task");
 
-    if (input.value !== "")
-    {
+    if (input.value !== "") {
 
         tasksArray.push({ name: input.value, complete: false });
-        let ul = document.querySelector('ul');
         
         renderTasks();
         
         // Clear the input field ready for the next task
         input.value = "";
-
+        updateLS();
     }
+}
+
+function updateLS() {
+    var stringTasks = JSON.stringify(tasksArray);
+    localStorage.setItem('tasks', stringTasks);
 }
 
 function renderTasks () {
@@ -40,7 +52,8 @@ function renderTasks () {
 
         // Add the list item to the list
         ul.appendChild(li);
-    });    
+    });
+    updateLS();
 }
 
 function clearAll()
@@ -54,6 +67,7 @@ function clearAll()
             }
             // Empty the array
             tasksArray = [];
+            updateLS();
         }
 
 function clicked(e)
@@ -69,6 +83,7 @@ function clicked(e)
                         {
                             tasksArray.splice(index, 1);
                             renderTasks();
+                            updateLS();
                         }
                     })
                 }
@@ -99,6 +114,7 @@ function clicked(e)
 
                     }
                     renderTasks();
+                    updateLS();
                 }
 
                 // Move a list item up one place
@@ -123,6 +139,7 @@ function clicked(e)
 
                     }
                     renderTasks();
+                    updateLS();
                 }
 
                 else if (e.target.className === "checkbox"){
@@ -144,5 +161,6 @@ function clicked(e)
 
                     }
                     renderTasks();
+                    updateLS();
                 }
         }
